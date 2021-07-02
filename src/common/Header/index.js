@@ -1,10 +1,10 @@
-import { HeaderWrapper, Logo } from './style'
+import style from './style.module.css'
 
 const Header = () => {
   return (
-    <HeaderWrapper>
-      <Logo/>
-    </HeaderWrapper>
+    <div className = { style.headerWrapper }>
+      <a className = { style.logo } href = '/' />
+    </div>
   );
 }
 

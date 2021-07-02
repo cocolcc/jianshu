@@ -1,0 +1,14 @@
+.headerWrapper {
+  display: flex;
+  height: 56px;
+  margin: 0 3px 0 3px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.logo {
+  height: 56px;
+  width: 120px;
+  margin: 0;
+  background-image: url('../../common/static/logo.jpeg');
+  background-size: 100%;
+}

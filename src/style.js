@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-// createGlobalStyle 中使用 css reset 使 项目在不同浏览器的原始css配置统一
+
+/* createGlobalStyle 中使用 css reset 使 项目在不同浏览器的原始css配置统一 */
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -15,7 +16,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
+	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
@@ -46,5 +47,4 @@ table {
 	border-spacing: 0;
 }
 `
-
-export { GlobalStyle };
+export default GlobalStyle;
