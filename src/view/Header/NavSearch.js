@@ -2,7 +2,7 @@ import style from './style.module.css';
 
 const NavSearch = () => {
   return (
-    <input className={style.navSearch} placeholder={ '搜索' }/>
+    <input className={ style.navSearch } placeholder={ '搜索' }/>
   );
 }
 

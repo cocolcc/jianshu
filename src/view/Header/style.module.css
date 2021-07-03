@@ -7,35 +7,47 @@
 }
 
 .logo {
+  position: relative;
+  min-width: 200px;
+}
+
+.logoImg {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 35px;
   width: 70px;
-  margin: 10px 35px;
-  background-image: url('../../common/static/logo.png');
-  background-size: contain;
 }
 
 .nav {
-  height: 100%;
+  display: flex;
+  flex-grow: 1;
   width: 960px;
 }
 
-.left {
-  height: 100%;
+.navLeft {
   display: flex;
+  flex-grow: 1;
   align-items: center;
-  float: left;
-  align-self: flex-start;
+  justify-content: flex-start;
 }
 
-.right {
-  height: 100%;
+.navRight {
   display: flex;
+  flex-grow: 1;
   align-items: center;
-  float: right;
-  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.navAddition {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 200px;
 }
 
 .navItem {
-  padding: 0 30px;
+  padding: 0 20px;
   font-size: 17px;
 }
 
@@ -49,6 +61,7 @@
 
 .navSearch {
   width: 120px;
+  margin: 0 20px;
   padding: 0 20px;
   height: 38px;
   outline: none;
@@ -62,18 +75,13 @@
   font-size: 14px;
 }
 
-.navAddition {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-  width: 240px;
-}
-
 .btn {
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
   border: 1px solid #ec6149;
   border-radius: 19px;
-  padding: 8px 20px;
+  padding: 0 20px;
   margin-right: 20px;
   font-size: 14px;
 }
