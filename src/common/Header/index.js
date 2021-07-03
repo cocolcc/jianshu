@@ -1,9 +1,14 @@
 import style from './style.module.css'
+import Logo from './Logo';
+import Nav from './Nav';
+import NavAddition from './NavAddition'
 
 const Header = () => {
   return (
     <div className = { style.headerWrapper }>
-      <a className = { style.logo } href = '/' />
+      <Logo />
+      <Nav />
+      <NavAddition />
     </div>
   );
 }

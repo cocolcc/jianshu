@@ -1,14 +1,88 @@
 .headerWrapper {
   display: flex;
+  justify-content: space-between;
   height: 56px;
   margin: 0 3px 0 3px;
   border-bottom: 1px solid #f0f0f0;
 }
 
 .logo {
-  height: 56px;
+  width: 70px;
+  margin: 10px 35px;
+  background-image: url('../../common/static/logo.png');
+  background-size: contain;
+}
+
+.nav {
+  height: 100%;
+  width: 960px;
+}
+
+.left {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  float: left;
+  align-self: flex-start;
+}
+
+.right {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  float: right;
+  align-self: flex-end;
+}
+
+.navItem {
+  padding: 0 30px;
+  font-size: 17px;
+}
+
+.navItem.active {
+  color: #ea5f5a;
+}
+
+.navItem.flat {
+  color: #969696;
+}
+
+.navSearch {
   width: 120px;
-  margin: 0;
-  background-image: url('../../common/static/logo.jpeg');
-  background-size: 100%;
+  padding: 0 20px;
+  height: 38px;
+  outline: none;
+  border: none;
+  border-radius: 19px;
+  background: #eee;
+}
+
+.navSearch::placeholder {
+  color: #999;
+  font-size: 14px;
+}
+
+.navAddition {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  width: 240px;
+}
+
+.btn {
+  border: 1px solid #ec6149;
+  border-radius: 19px;
+  padding: 8px 20px;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.btn.reg {
+  color: #ec6149;
+}
+
+.btn.writting {
+  background: #ec6149;
+  color: #fff;
 }
