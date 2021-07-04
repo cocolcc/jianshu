@@ -7,7 +7,10 @@ const NavAddition = () => {
   return (
     <div className={style.navAddition}>
       <div className={regBtnClassNames}>注册</div>
-      <div className={writtingClassNames}>写文章</div>
+      <div className={writtingClassNames}>
+        <span className='iconfont'>&#xe6eb;</span>
+        {' 写文章'}
+      </div>
     </div>
   );
 }

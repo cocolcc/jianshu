@@ -13,7 +13,9 @@ const Nav = () => {
         <NavSearch />
       </div>
       <div className={style.navRight}>
-        <NavItem isFlat={true}>Aa</NavItem>
+        <NavItem>
+          <span className={`iconfont ${style.aaIcon}`}>&#xe636;</span>
+        </NavItem>
       </div>
     </div>
   )

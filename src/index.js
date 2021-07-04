@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import GlobalStyle from './style';
 import App from './App';
+require('./style.css');
+require('./statics/iconfont/iconfont.css');
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
     <App />
   </React.StrictMode>,
   document.getElementById('root')
