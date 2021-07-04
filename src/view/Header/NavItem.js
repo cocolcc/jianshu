@@ -1,4 +1,4 @@
-import style from './style.module.css';
+import style from './style.module.less';
 import className from 'classnames';
 
 const NavItem = (props) => {

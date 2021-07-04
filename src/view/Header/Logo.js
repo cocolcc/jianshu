@@ -1,4 +1,4 @@
-import style from './style.module.css'
+import style from './style.module.less'
 import getImagePath from '../../utils/getImagePath';
 
 const Logo = () => {
