@@ -3,7 +3,7 @@ import className from 'classnames';
 
 const NavItem = (props) => {
   const { children, isActive, isFlat } = props;
-  const navItemClassNames = className(style.navItem, { [style.active]: isActive }, { [style.flat]: isFlat });
+  const navItemClassNames = className(style.navItem, isActive ? style.active : '', isFlat ? style.flat: '');
   return (
     <div className={navItemClassNames} >{children}</div>
   );
