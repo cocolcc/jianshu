@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import actionCreators  from '../../store/actionCreators';
+import { actionCreators }  from '../../store/header';
 import style from './style.module.less';
 
 const NavSearch = (props) => {
@@ -25,14 +25,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    inputOnBlur(){
-      const action = actionCreators.getHeaderSearchInputBlurAction();
-      dispatch(action);
-    },
     imputOnFocus(){
-      const action = actionCreators.getHeaderSearchInputFocusAction()
-      dispatch(action);
-    } 
+      dispatch(actionCreators.getSearchFocusAction());
+    },
+    inputOnBlur(){
+      dispatch(actionCreators.getSearchBlurAction());
+    },
   }
 }
 
