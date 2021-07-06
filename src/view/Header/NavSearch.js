@@ -19,7 +19,7 @@ const NavSearch = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isFocus: state.header.isFocus
+    isFocus: state.getIn(['header', 'isFocus'])
   }
 }
 
