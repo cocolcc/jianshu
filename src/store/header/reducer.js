@@ -2,7 +2,8 @@ import * as actionTypes from "./actionTypes";
 import { fromJS } from "immutable";
 
 const defaultState = fromJS({
-  isFocus: false 
+  isFocus: false,
+  list: []
 })
 
 const headerReducer = (state = defaultState, action) => {
@@ -11,6 +12,9 @@ const headerReducer = (state = defaultState, action) => {
   }
   if (action.type === actionTypes.SEARCH_BLUR) {
     return  state.set('isFocus', false)
+  }
+  if (action.type === actionTypes.STORE_LIST) {
+    return state.set('list', action.data)
   }
   return state;
 }
