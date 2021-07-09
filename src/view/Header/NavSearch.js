@@ -1,26 +1,37 @@
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators }  from '../../store/header';
 import style from './style.module.less';
 
-const NavSearch = (props) => {
-  const { isFocus, inputOnBlur, imputOnFocus, fetchSearchList, list } = props;
+const NavSearch = () => {
+  const isFocus = useSelector(state => state.getIn(['header', 'isFocus']));
+  const list = useSelector(state => state.getIn(['header', 'list']));
+  const dispatch = useDispatch();
+
+  function inputOnFocus() {
+    dispatch(actionCreators.fetchSearchListAction());
+    dispatch(actionCreators.searchFocusAction());
+  }
+
+  function inputOnBlur() {
+    dispatch(actionCreators.searchBlurAction());
+  }
+  
   return (
     <div className={style.navSearchWrapper}>
       <input
         className={`${style.navSearch} ${isFocus ? style.focus : ''}`}
         placeholder={'搜索'}
         onBlur={ inputOnBlur }
-        onFocus={ imputOnFocus }
+        onFocus={ inputOnFocus }
       />
       <span className={`iconfont ${style.searchIcon} ${isFocus ? style.focus : ''}`}>&#xe65b;</span>
-      {showSearchInfo(isFocus, fetchSearchList, list)}
+      {showSearchInfo(isFocus, list)}
     </div>
   );
 }
 
-const showSearchInfo = (isShow, fetchSearchList, list) => {
+const showSearchInfo = (isShow, list) => {
   if (isShow) {
-    fetchSearchList();
     return (
       <div className={style.searchInfo}>
         <div className={style.searchInfoHeader}>
@@ -39,25 +50,4 @@ const showSearchInfo = (isShow, fetchSearchList, list) => {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isFocus: state.getIn(['header', 'isFocus']),
-    list: state.getIn(['header', 'list'])
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    imputOnFocus() {
-      dispatch(actionCreators.searchFocusAction());
-    },
-    inputOnBlur() {
-      dispatch(actionCreators.searchBlurAction());
-    },
-    fetchSearchList() {
-      dispatch(actionCreators.fetchSearchListAction());
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavSearch);
+export default NavSearch;
