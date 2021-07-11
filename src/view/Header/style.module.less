@@ -103,6 +103,8 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     .searchInfoHeader {
       display: flex;
+      line-height: 17px;
+      text-align: center;
       margin-bottom: 10px;
       justify-content: space-between;
       .searchInfoTitle {
@@ -112,6 +114,14 @@
       .searchInfoSwitch {
         font-size: 13px;
         color: #969696;
+        .spin {
+          display: block;
+          float: left;
+          margin-right: 2px;
+          transition: all 0.2s ease-in;
+          transform-origin: center center;
+          transform: rotate(0deg);
+        }
       }
     }
     .searchInfoItem {
@@ -152,3 +162,4 @@
   font-size: 17px !important;
   color: #969696;
 }
+//

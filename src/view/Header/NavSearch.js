@@ -27,7 +27,9 @@ const NavSearch = () => {
     dispatch(actionCreators.onMouseLeaveAction());
   }
 
-  function changePage() {
+  function changePage(refIcon) {
+    const originAngle = +refIcon.style.transform.replace(/[^0-9]/ig, '');
+    refIcon.style.transform = `rotate(${originAngle + 360}deg)`;
     if (currentPage < totalPage) {
       dispatch(actionCreators.changePageAction(currentPage + 1));
     } else {
@@ -37,6 +39,7 @@ const NavSearch = () => {
 
   function showSearchInfo() {
     const tempList = list.toJS();
+    let refIcon;
     if (tempList.length && (isFocus || isMouseIn)) {
       const showList = [];
       for (let i = (currentPage - 1) * 10; i < currentPage * 10; i++) {
@@ -52,7 +55,16 @@ const NavSearch = () => {
         >
           <div className={style.searchInfoHeader}>
             <div className={style.searchInfoTitle}>热门搜索</div>
-            <div className={style.searchInfoSwitch} onClick={changePage}>换一批</div>
+            <div
+              className={style.searchInfoSwitch}
+              onClick={() => changePage(refIcon)}
+            >
+              <span
+                className={`iconfont ${style.spin}`}
+                ref={(node) => {refIcon = node}}
+              >&#xe851;</span>
+              换一批
+            </div>
           </div>
           {showList}
         </div>
