@@ -7,7 +7,12 @@ import axios from 'axios';
 function* fetchSearchList() {
   try {
     const src = yield axios.get('/api/headerSearchList.json');
-    const action = actionCreators.storeSearchListAction(fromJS(src.data.data));
+    const list = src.data.data;
+    const data = {
+      list,
+      totalPage: Math.ceil(list.length / 10)
+    }
+    const action = actionCreators.storeSearchListAction(fromJS(data));
     yield put(action);
   } catch (e) {
     console.log(e);

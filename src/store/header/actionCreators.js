@@ -16,3 +16,16 @@ export const storeSearchListAction = (data) => ({
   type: actionTypes.STORE_LIST,
   data
 })
+
+export const onMouseEnterAction = () => ({
+  type: actionTypes.MOUSE_IN
+})
+
+export const onMouseLeaveAction = () => ({
+  type: actionTypes.MOUSE_LEAVE
+})
+
+export const changePageAction = (data) => ({
+  type: actionTypes.CHANGE_PAGE,
+  data
+})
