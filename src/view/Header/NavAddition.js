@@ -1,13 +1,37 @@
-import style from './style.module.less';
-import className from 'classnames';
+import { makeStyles } from '@material-ui/core/styles';
 
-const regBtnClassNames = className(style.btn, style.reg);
-const writtingClassNames = className(style.btn, style.writting);
+const useStyles = makeStyles({
+  btn: {
+    height: '38px',
+    lineHeight: '38px',
+    textAlign: 'center',
+    border: '1px solid #ec6149',
+    borderRadius: '19px',
+    padding: '0 20px',
+    marginRight: '20px',
+    fontSize: '14px',
+  },
+  reg: {
+    color: '#ec6149'
+  },
+  writting: {
+    background: '#ec6149',
+    color: '#fff'
+  },
+  navAddition: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    minWidth: '200px'
+  }
+  
+});
 const NavAddition = () => {
+  const classes = useStyles();
   return (
-    <div className={style.navAddition}>
-      <div className={regBtnClassNames}>注册</div>
-      <div className={writtingClassNames}>
+    <div className={classes.navAddition}>
+      <div className={`${classes.btn} ${classes.reg}`}>注册</div>
+      <div className={`${classes.btn} ${classes.writting}`}>
         <span className='iconfont'>&#xe6eb;</span>
         {' 写文章'}
       </div>
