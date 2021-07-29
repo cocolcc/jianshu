@@ -1,9 +1,11 @@
 import { all, fork } from 'redux-saga/effects';
 import headerSaga from './header/saga';
+import homeSaga from './home/saga';
 
 const forkSagas = [];
 const sagas = [
-  headerSaga
+  headerSaga,
+  homeSaga
 ];
 sagas.forEach(saga => {
   forkSagas.push(fork(saga))

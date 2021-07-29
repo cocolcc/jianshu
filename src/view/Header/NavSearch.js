@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { actionCreators }  from '../../store/header';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useclassess = makeStyles({
+const useclassess = makeStyles((theme) => ({
   focus: {},
   navSearchWrapper: {
     position: 'relative',
@@ -46,7 +46,7 @@ const useclassess = makeStyles({
     top: '4px',
     '&$focus': {
       background: '#777',
-      color: '#fff'
+      color: '#fff',
     }
   },
   searchInfoHeader: {
@@ -57,7 +57,7 @@ const useclassess = makeStyles({
     justifyContent: 'space-between',
     searchInfoTitle: {
       fontSize: '14px',
-      color: '#969696'
+      color: theme.flat,
     }
   },
   searchInfoItem: {
@@ -71,12 +71,12 @@ const useclassess = makeStyles({
     marginTop: '10px',
     marginRight: '10px',
     border: '1px solid #ddd',
-    color: '#787878'
+    color: '#787878',
   },
   searchInfoSwitch: {
     cursor: 'pointer',
     fontSize: '13px',
-    color: '#969696',
+    color: theme.flat,
   },
   spin: {
     display: 'block',
@@ -86,7 +86,7 @@ const useclassess = makeStyles({
     transformOrigin: 'center center',
     transform: angle => `rotate(${angle}deg)`,
   }
-});
+}));
 const NavSearch = () => {
   const [angle, setAngle] = useState(0);
   const classes = useclassess(angle);

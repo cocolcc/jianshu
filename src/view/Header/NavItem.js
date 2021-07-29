@@ -1,17 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   navItem: {
     padding: '0 20px',
+    whiteSpace: 'nowrap',
     fontSize: 17
   },
   active: {
-    color: '#ea5f5a'
+    color: theme.primary,
   },
   flat: {
-    color: '#969696'
+    color: theme.flat,
   }
-});
+}));
 const NavItem = (props) => {
   const classes = useStyles();
   const { children, isActive, isFlat } = props;

@@ -1,24 +1,32 @@
 import Logo from './Logo';
 import Nav from './Nav';
-import NavAddition from './NavAddition'
+import HeaderAddition from './HeaderAddition'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
+  wrapper: {
+    display: 'flex',
+    borderBottom: '1px solid #f0f0f0',
+    justifyContent: 'center',
+  },
   headerWrapper: {
-  display: 'flex',
-  height: '56px',
-  margin: '0 3px 0 3px',
-  borderBottom: '1px solid #f0f0f0'
-}
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    height: '56px',
+    maxWidth: '1450px',
+  }
 });
 
 const Header = () => {
   const classes = useStyles();
   return (
-    <div className = { classes.headerWrapper }>
-      <Logo />
-      <Nav />
-      <NavAddition />
+    <div className={classes.wrapper}>
+      <div className = {classes.headerWrapper}>
+        <Logo />
+        <Nav />
+        <HeaderAddition />
+      </div>
     </div>
   );
 }

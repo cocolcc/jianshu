@@ -2,14 +2,13 @@ import getImagePath from '../../utils/getImagePath';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-  logo: {
-    position: 'relative',
-    minWidth: '200px'
+  logoWrapper: {
+    height: '100%',
+    marginRight: '70px',
   },
   logoImg: {
-    position: 'absolute',
-    top: '10px',
-    left: '10px',
+    marginLeft: '10px',
+    marginTop: '10.5px',
     height: '35px',
     width: '70px'
   }
@@ -18,7 +17,7 @@ const useStyles = makeStyles({
 const Logo = () => {
   const classes = useStyles();
   return (
-    <div className={classes.logo}>
+    <div className={classes.logoWrapper}>
       <img className={classes.logoImg} src={ getImagePath('/static/logo.png') } alt='logo' />
     </div>
   );
