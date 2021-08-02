@@ -5,6 +5,7 @@ import * as URI from './uri';
 const Routers = () => {
   return (
     <Router>
+      <Views.Header />
       <Switch>
         <Route path={URI.HOME} exact component={Views.Home}/>
         <Route path={URI.DETAIL} component={Views.Detail}/>

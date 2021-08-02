@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { actionCreators } from '../../store/home';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '700',
     lineHeight: '1.5',
     padding: '0 2px 5px 0',
+    textDecoration: 'inherit',
+    color: 'inherit',
+    cursor: 'pointer',
   },
   desc: {
     wordWrap: 'break-word',
@@ -71,7 +75,7 @@ const List = () => {
             <div key={index} className={classes.listItemWrapper}>
               {item.get('imgUrl') && (<img className={classes.listItemImg} src={item.get('imgUrl')} alt='list img'/>)}
               <div className={classes.listItemText}>
-                <div className={classes.title}>{item.get('title')}</div>
+                <NavLink className={classes.title} to='/detail'>{item.get('title')}</NavLink>
                 <div className={classes.desc}>{item.get('desc')}</div>
                 <div className={classes.footer}>
                   <div className={classes.footerItem}>
