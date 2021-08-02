@@ -4,6 +4,7 @@ import Writer from './Writer';
 import { actionCreators } from '../../store/home';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   homeWrapper: {
@@ -35,6 +36,18 @@ const useStyles = makeStyles((theme) => ({
     height: '40px',
     marginTop: '20px',
     cursor: 'pointer',
+  },
+  scrollToTop: {
+    position: 'fixed',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: '40px',
+    bottom: '40px',
+    border: `1px solid ${theme.flat}`,
+    height: '50px',
+    width: '50px',
+    cursor: 'pointer',
   }
 }));
 
@@ -42,12 +55,32 @@ const Home = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const articlePage = useSelector(state => state.getIn(['home', 'articlePage']));
+  const showScrollToTop = useSelector(state => state.getIn(['home', 'showScrollToTop']));
+  useEffect(
+    () => {
+      function handleShowScroll() {
+        if (window.pageYOffset > 500) {
+          dispatch(actionCreators.taggleScrollTopAction(true));
+        } else {
+          dispatch(actionCreators.taggleScrollTopAction(false));
+        }
+      }
+      window.addEventListener('scroll', handleShowScroll);
+      return (() => {
+        window.removeEventListener('scroll', handleShowScroll);
+      });
+    }, [dispatch]
+  );
   function loadMoreList() {
     dispatch(actionCreators.fetchMoreArticleListAction(articlePage));
+  }
+  function scrollToTop() {
+    window.scrollTo(0,0);
   }
 
   return(
     <div className={classes.homeWrapper}>
+      {showScrollToTop ? <div className={classes.scrollToTop} onClick={scrollToTop}><span className={'iconfont'}>&#xe85f;</span></div> : null}
       <div className={classes.homeLeftWrapper}>
         <List />
         <button className={classes.ReadMoreBtn} onClick={loadMoreList}>阅读更多</button>

@@ -6,7 +6,7 @@ const defaultState = fromJS({
   recommendList: [],
   recommendWriters: [],
   articlePage: 1,
-  showScroll: false
+  showScrollToTop: false
 })
 
 const homeReducer = (state = defaultState, action) => {
@@ -23,7 +23,7 @@ const homeReducer = (state = defaultState, action) => {
     case actionTypes.STORE_RECOMMEND_WRITERS:
       return state.set('recommendWriters', action.data);
     case actionTypes.TAGGLE_SCROLL_TOP:
-      return state.set('showScroll', action.data);
+      return state.set('showScrollToTop', action.data);
     default:
       return state;
   }
