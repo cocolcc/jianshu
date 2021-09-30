@@ -33,6 +33,7 @@ const useclassess = makeStyles((theme) => ({
     top: '56px',
     left: '0px',
     width: '240px',
+    background: '#fff',
     boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
   },
   searchIcon: {
