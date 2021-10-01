@@ -2,11 +2,12 @@ import { put, takeEvery } from 'redux-saga/effects'
 import * as actionTypes from "./actionTypes";
 import * as actionCreators from './actionCreators';
 import { fromJS } from "immutable";
+import { getApiPath } from '../../utils/getPath';
 import axios from 'axios';
 
 function* fetchArticleList() {
   try {
-    const src = yield axios.get('/api/articleList.json');
+    const src = yield axios.get(getApiPath('/api/articleList.json'));
     const articleList = src.data.data;
     const action = actionCreators.storeArticleListAction(fromJS(articleList));
     yield put(action);
@@ -18,7 +19,7 @@ function* fetchArticleList() {
 function* fetchMoreArticleList(action) {
   const articlePage = action.data;
   try {
-    const src = yield axios.get(`/api/addArticleList.json?${articlePage}`);
+    const src = yield axios.get(getApiPath(`/api/addArticleList.json?${articlePage}`));
     const data = {
       articleList: src.data.data,
       articlePage: articlePage + 1
@@ -32,7 +33,7 @@ function* fetchMoreArticleList(action) {
 
 function* fetchRecommendList() {
   try {
-    const src = yield axios.get('/api/recommendList.json');
+    const src = yield axios.get(getApiPath('/api/recommendList.json'));
     const recommendList = src.data.data;
     const action = actionCreators.storeRecommendListAction(fromJS(recommendList));
     yield put(action);
@@ -43,7 +44,7 @@ function* fetchRecommendList() {
 
 function* fetchRecommendWriters() {
   try {
-    const src = yield axios.get('/api/recommendWriters.json');
+    const src = yield axios.get(getApiPath('/api/recommendWriters.json'));
     const recommendWriters = src.data.data.users;
     const action = actionCreators.storeRecommendWritersAction(fromJS(recommendWriters));
     yield put(action);

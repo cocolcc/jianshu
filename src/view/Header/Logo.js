@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import getImagePath from '../../utils/getImagePath';
+import { getImagePath } from '../../utils/getPath';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({

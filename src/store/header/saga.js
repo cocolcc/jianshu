@@ -2,11 +2,12 @@ import { put, takeEvery } from 'redux-saga/effects'
 import * as actionTypes from "./actionTypes";
 import * as actionCreators from './actionCreators';
 import { fromJS } from "immutable";
+import { getApiPath } from '../../utils/getPath';
 import axios from 'axios';
 
 function* fetchSearchList() {
   try {
-    const src = yield axios.get('/api/headerSearchList.json');
+    const src = yield axios.get(getApiPath('/api/headerSearchList.json'));
     const list = src.data.data;
     const data = {
       list,

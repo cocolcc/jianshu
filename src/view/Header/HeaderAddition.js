@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import getImagePath from '../../utils/getImagePath';
+import { getImagePath } from '../../utils/getPath';
 
 const useStyles = makeStyles((theme) =>({
   HeaderAdditionWrapper: {
