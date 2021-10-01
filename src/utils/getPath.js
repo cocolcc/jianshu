@@ -1,9 +1,11 @@
 const getImagePath = (subPath) => {
-  return `.${subPath}`;
+  return basePath + subPath;
 }
 
 const getApiPath = (subPath) => {
-  return `.${subPath}`;
+  return basePath + subPath;
 }
 
-export { getImagePath, getApiPath }
+const basePath = '/jianshu/';
+
+export { getImagePath, getApiPath, basePath }

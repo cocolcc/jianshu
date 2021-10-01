@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { actionCreators }  from '../../store/header';
 import { makeStyles } from '@material-ui/core/styles';
+import { NavLink } from 'react-router-dom';
 
 const useclassess = makeStyles((theme) => ({
   focus: {},
@@ -129,7 +130,7 @@ const NavSearch = () => {
     if (tempList.length && (isFocus || isMouseIn)) {
       const showList = [];
       for (let i = (currentPage - 1) * 10; i < currentPage * 10; i++) {
-        tempList[i] && showList.push(<a className={classes.searchInfoItem} key={tempList[i]} href='/'>{tempList[i]}</a>);
+        tempList[i] && showList.push(<NavLink className={classes.searchInfoItem} key={tempList[i]} to='/'>{tempList[i]}</NavLink>);
       }
       return (
         <div

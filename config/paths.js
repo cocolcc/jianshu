@@ -53,7 +53,7 @@ const resolveModule = (resolveFn, filePath) => {
 // config after eject: we're in ./config/
 module.exports = {
   dotenv: resolveApp('.env'),
-  appPath: resolveApp('.'),
+  appPath: resolveApp('./jianshu/'),
   appBuild: resolveApp(buildPath),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
