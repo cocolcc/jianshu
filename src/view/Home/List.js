@@ -75,7 +75,7 @@ const List = () => {
             <div key={index} className={classes.listItemWrapper}>
               {item.get('imgUrl') && (<img className={classes.listItemImg} src={item.get('imgUrl')} alt='list img'/>)}
               <div className={classes.listItemText}>
-                <NavLink className={classes.title} to='/detail'>{item.get('title')}</NavLink>
+                <NavLink className={classes.title} to={'/detail/' + item.get('id')}>{item.get('title')}</NavLink>
                 <div className={classes.desc}>{item.get('desc')}</div>
                 <div className={classes.footer}>
                   <div className={classes.footerItem}>

@@ -1,0 +1,14 @@
+{
+	"success": true,
+	"data": {
+			"id": 9,
+			"title": "“高颜值”网络图绘制工具-Cytoscape！",
+			"imgUrl": "https://upload-images.jianshu.io/upload_images/25009585-c47a0c5b59b0fa0d.png?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+			"paragraph": [
+				"网络图非常常见，不仅被用在生物信息学分析，在生活中也很常见，如民航航线图、食物链、基因调控网络都是网络图经典的例子。",
+				"导入edge后，在图片编辑框中就可以看到生成的最基础的网络图，我们下一步需要做的就是对它进行美化，也可以进一步通过Cytoscape进行数据挖掘。",
+				"需要特别解释一下“参数赋值”和“点/线排列形式”的用法。",
+				"其实这里是一些阿巴阿巴..."
+			]
+		}
+}
