@@ -5,7 +5,7 @@ const defaultState = fromJS({
   account: '',
   password: '',
   showPassword: false,
-  isLogin: true,
+  isLogin: false,
   errMsg: ''
 })
 
