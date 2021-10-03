@@ -1,5 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { getImagePath } from '../../utils/getPath';
+import { actionCreators } from '../../store/login';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import * as URI from '../../uri';
 
 const useStyles = makeStyles((theme) =>({
   HeaderAdditionWrapper: {
@@ -39,22 +42,35 @@ const useStyles = makeStyles((theme) =>({
   },
   writting: {
     background: theme.primary,
-    color: '#fff'
-  } 
+    color: '#fff',
+    cursor: 'pointer',
+    textDecoration: 'none'
+  },
+  text: {
+    textDecoration: 'none',
+    color: '#333',
+    cursor: 'pointer'
+  }
 }));
-const HeaderAddition = () => {
+const HeaderAddition = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const isLogin = useSelector(state => state.getIn(['login', 'isLogin']))
+
+  function handleLogout() {
+    dispatch(actionCreators.logoutAction());
+  }
+
   return (
     <div className={classes.HeaderAdditionWrapper}>
       <span className={ `iconfont ${classes.aaIcon}` }>&#xe636;</span>
       <div className={classes.userRegWrapper}>
-        <img className={classes.userRegImg} src={getImagePath('/static/userRegDefine.jpeg')} alt='userRegImg' />
-        <div className={`iconfont ${classes.userRegIcon}`}>&#xe68d;</div>
+        {isLogin ? <div className={classes.text} onClick={handleLogout}>退出</div> : <NavLink className={classes.text} to={URI.LOGIN}>登录</NavLink>}
       </div>
-      <div className={`${classes.btn} ${classes.writting}`}>
+      <NavLink className={`${classes.btn} ${classes.writting}`} to={URI.WRITING}>
         <span className={`iconfont`}>&#xe6eb;</span>
         {' 写文章'}
-      </div>
+      </NavLink>
     </div>
   );
 }

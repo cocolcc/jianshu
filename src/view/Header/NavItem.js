@@ -4,7 +4,8 @@ const useStyles = makeStyles((theme) => ({
   navItem: {
     padding: '0 20px',
     whiteSpace: 'nowrap',
-    fontSize: 17
+    fontSize: 17,
+    cursor: 'pointer'
   },
   active: {
     color: theme.primary,
@@ -17,7 +18,7 @@ const NavItem = (props) => {
   const classes = useStyles();
   const { children, isActive, isFlat } = props;
   return (
-    <div className={`${classes.navItem} ${isActive ? classes.active : ''} ${isFlat ? classes.flat : ''}`} >{children}</div>
+    <div className={`${classes.navItem} ${isActive ? classes.active : ''} ${isFlat ? classes.flat : ''}`}>{children}</div>
   );
 }
 

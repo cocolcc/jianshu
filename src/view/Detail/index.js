@@ -7,6 +7,7 @@ const useStyles = makeStyles({
   detailWrapper: {
     width: '640px',
     margin: '0 auto',
+    marginTop: '40px'
   },
   title: {
     fontSize: '30px',
@@ -14,7 +15,6 @@ const useStyles = makeStyles({
     wordBreak: 'break-word',
     color: '#404040',
     textAlign: 'center',
-    marginTop: '40px',
     marginBottom: '40px'
   },
   detailImage: {

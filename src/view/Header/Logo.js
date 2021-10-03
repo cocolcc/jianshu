@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { getImagePath } from '../../utils/getPath';
 import { makeStyles } from '@material-ui/core/styles';
+import * as URI from '../../uri';
 
 const useStyles = makeStyles({
   logoWrapper: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
 const Logo = () => {
   const classes = useStyles();
   return (
-    <Link className={classes.logoWrapper} to='/'>
+    <Link className={classes.logoWrapper} to={URI.HOME}>
       <img className={classes.logoImg} src={ getImagePath('/static/logo.png') } alt='logo' />
     </Link>
   );

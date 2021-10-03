@@ -2,6 +2,7 @@ import List from './List';
 import Topic from './Topic';
 import Writer from './Writer';
 import { actionCreators } from '../../store/home';
+import { actionCreators as  headerActionCreators} from '../../store/header';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core';
 import { useEffect } from 'react';
@@ -58,6 +59,7 @@ const Home = () => {
   const showScrollToTop = useSelector(state => state.getIn(['home', 'showScrollToTop']));
   useEffect(
     () => {
+      dispatch(headerActionCreators.activeDiscoveryAction());
       function handleShowScroll() {
         if (window.pageYOffset > 500) {
           dispatch(actionCreators.taggleScrollTopAction(true));

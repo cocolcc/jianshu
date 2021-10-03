@@ -29,3 +29,15 @@ export const changePageAction = (data) => ({
   type: actionTypes.CHANGE_PAGE,
   data
 })
+
+export const activeDiscoveryAction = () => ({
+  type: actionTypes.ACTIVE_DISCOVERY,
+})
+
+export const activeFollowingAction = () => ({
+  type: actionTypes.ACTIVE_FOLLOWING,
+})
+
+export const activeMessageAction = () => ({
+  type: actionTypes.ACTIVE_MESSAGE,
+})

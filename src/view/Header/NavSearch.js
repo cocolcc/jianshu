@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { actionCreators }  from '../../store/header';
 import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
+import * as URI from '../../uri';
 
 const useclassess = makeStyles((theme) => ({
   focus: {},
@@ -36,6 +37,7 @@ const useclassess = makeStyles((theme) => ({
     width: '240px',
     background: '#fff',
     boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
+    zIndex: 2
   },
   searchIcon: {
     transition: 'all 0.2s ease-in',
@@ -130,7 +132,7 @@ const NavSearch = () => {
     if (tempList.length && (isFocus || isMouseIn)) {
       const showList = [];
       for (let i = (currentPage - 1) * 10; i < currentPage * 10; i++) {
-        tempList[i] && showList.push(<NavLink className={classes.searchInfoItem} key={tempList[i]} to='/'>{tempList[i]}</NavLink>);
+        tempList[i] && showList.push(<NavLink className={classes.searchInfoItem} key={tempList[i]} to={URI.HOME}>{tempList[i]}</NavLink>);
       }
       return (
         <div

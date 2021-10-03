@@ -7,6 +7,9 @@ const defaultState = fromJS({
   list: [],
   currentPage: 1,
   totalPage: 0,
+  isDiscoveryActive: true,
+  isFollowingActive: false,
+  isMessageActive: false
 })
 
 const headerReducer = (state = defaultState, action) => {
@@ -26,6 +29,24 @@ const headerReducer = (state = defaultState, action) => {
       return state.set('isMouseIn', false);
     case actionTypes.CHANGE_PAGE:
       return state.set('currentPage', action.data)
+    case actionTypes.ACTIVE_DISCOVERY:
+      return state.merge({
+        isDiscoveryActive: true,
+        isFollowingActive: false,
+        isMessageActive: false
+      });
+    case actionTypes.ACTIVE_FOLLOWING:
+      return state.merge({
+        isDiscoveryActive: false,
+        isFollowingActive: true,
+        isMessageActive: false
+      });
+    case actionTypes.ACTIVE_MESSAGE:
+      return state.merge({
+        isDiscoveryActive: false,
+        isFollowingActive: false,
+        isMessageActive: true
+      });
     default:
       return state;
   }
