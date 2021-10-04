@@ -9,16 +9,17 @@ import { actionCreators as headerActionCreators} from '../../store/header';
 const useStyles = makeStyles((theme) => ({
   writingWrapper: {
     width: '640px',
-    margin: '40px auto',
+    margin: '60px auto',
+  },
+  sendBtn: {
+    top: '20px',
+    right: '25px'
   },
   title: {
-    fontSize: '30px',
-    fontWeight: '700',
-    wordBreak: 'break-word',
-    color: '#404040',
-    textAlign: 'center',
-    marginTop: '40px',
-    marginBottom: '40px'
+    width: '100%',
+    height: 400,
+    borderStyle: 'none',
+    outline: 'none'
   },
   writingSubBtn: {
     color: '#fff',
@@ -37,36 +38,47 @@ const useStyles = makeStyles((theme) => ({
 const Writing = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const article = useSelector(state => state.getIn(['writing', 'article']));
-
+  const title = useSelector(state => state.getIn(['writing', 'title']));
+  const body = useSelector(state => state.getIn(['writing', 'body']));
+    
   useEffect(
     () => {
       dispatch(headerActionCreators.activeWritingAction());
     }, [dispatch]
   );
 
-  const handleChangeArticle = () => (event) => {
-    dispatch(actionCreators.storeArticleAction(event.target.value));
+  const handleChangeTitle = () => (event) => {
+    dispatch(actionCreators.storeTitleAction(event.target.value));
     dispatch(actionCreators.needLoadAction());
   }
 
-  function handleClickSubmit() {
-    dispatch(actionCreators.loadArticleAction(article));
+  const handleChangeBody = () => (event) => {
+    dispatch(actionCreators.storeBodyAction(event.target.value));
+    dispatch(actionCreators.needLoadAction());
   }
+
+  // function handleClickSubmit() {
+  //   dispatch(actionCreators.loadArticleAction(article));
+  // }
   
   return (
     <div className={classes.writingWrapper}>
-      <div className={classes.title}>开始写文章吧！</div> 
       <TextareaAutosize
         aria-label="empty textarea"
-        placeholder="Empty"
-        style={{ width: '100%', height: 400 }}
-        value={article}
-        onChange={handleChangeArticle()}
+        placeholder="输入标题..."
+        style={{ width: '100%', height: 80, borderStyle: 'none', outline: 'none', fontSize: 25}}
+        value={title}
+        onChange={handleChangeTitle()}
       />
-      <div className={classes.writingSubBtn} onClick={handleClickSubmit}>提交</div>
+      <TextareaAutosize
+        aria-label="empty textarea"
+        placeholder="输入正文..."
+        style={{ width: '100%', height: 400, borderStyle: 'none', outline: 'none', fontSize: 18}}
+        value={body}
+        onChange={handleChangeBody()}
+      />
+      {/* <div className={classes.writingSubBtn} onClick={handleClickSubmit}>提交</div> */}
     </div>
-    
   );
 }
 

@@ -4,11 +4,30 @@ import * as actionCreators from './actionCreators';
 import { fromJS } from "immutable";
 import { getApiPath } from '../../utils/getPath';
 import axios from 'axios';
+import { select } from 'redux-saga/effects';
 
 function* fetchArticleList() {
   try {
     const src = yield axios.get(getApiPath('/api/articleList.json'));
-    const articleList = src.data.data;
+    let articleList = src.data.data;
+
+    //为了模拟后台而mock的功能：显示刚刚提交的文章
+    let currentTitle = yield select(state => state.getIn(['writing', 'title']));
+    let currentBody = yield select(state => state.getIn(['writing', 'body']));
+    let currentIsLoaded = yield select(state => state.getIn(['writing', 'isLoaded']));
+    if (currentIsLoaded) {
+      articleList.splice(0, 0, {
+      id: 'lcc',
+      title: currentTitle,
+      desc: currentBody.slice(0, 100) + '...',
+      imgUrl: '',
+      diamondNum: 0,
+      auther: 'lcc',
+      commentsNum: 0,
+      likeNum: 0
+    });
+  }
+    
     const action = actionCreators.storeArticleListAction(fromJS(articleList));
     yield put(action);
   } catch (e) {

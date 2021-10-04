@@ -1,7 +1,12 @@
 import * as actionTypes from './actionTypes';
 
-export const storeArticleAction = (data) => ({
-  type: actionTypes.STORE_ARTICLE,
+export const storeTitleAction = (data) => ({
+  type: actionTypes.STORE_TITLE,
+  data
+});
+
+export const storeBodyAction = (data) => ({
+  type: actionTypes.STORE_BODY,
   data
 });
 

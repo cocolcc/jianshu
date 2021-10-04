@@ -13,6 +13,7 @@ import { actionCreators as headerActionCreators } from '../../store/header';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import * as URI from '../../uri'
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
   loginCardWrapper: {
@@ -45,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
   const classes = useStyles();
+  const history = useHistory();
   const dispatch = useDispatch();
   const account = useSelector(state => state.getIn(['login', 'account']));
   const password = useSelector(state => state.getIn(['login', 'password']));
@@ -57,7 +59,7 @@ const Login = (props) => {
   }, [dispatch]);
   
   if (isLogin) {
-    props.history.push(URI.HOME);
+    history.push(URI.HOME);
   }
 
   const handleAccountChange = () => (event) => {

@@ -1,7 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { actionCreators } from '../../store/login';
+import { actionCreators as writingActionCreators } from '../../store/writing';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import * as URI from '../../uri';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
@@ -13,6 +14,10 @@ const useStyles = makeStyles((theme) =>({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
+  link: {
+    textDecoration: 'none',
+    color: '#fff',
+  },
   logIcon: {
     color: theme.flat
   },
@@ -20,6 +25,7 @@ const useStyles = makeStyles((theme) =>({
     color: theme.primary
   },
   btn: {
+    transition: 'all 0.2s ease-in',
     height: '38px',
     width: '38px',
     lineHeight: '38px',
@@ -29,6 +35,9 @@ const useStyles = makeStyles((theme) =>({
     // padding: '0 20px',
     marginRight: '30px',
     fontSize: '14px',
+    background: theme.primary,
+    color: '#fff',
+    cursor: 'pointer'
   },
   userRegWrapper: {
     display: 'flex',
@@ -43,11 +52,11 @@ const useStyles = makeStyles((theme) =>({
   userRegIcon: {
     color: theme.flat,
   },
-  writting: {
-    background: theme.primary,
-    color: '#fff',
-    cursor: 'pointer',
-    textDecoration: 'none'
+  publish: {
+    transition: 'all 0.2s ease-in',
+    height: '38px',
+    width: '58px',
+    borderRadius: '15px',
   },
   text: {
     textDecoration: 'none',
@@ -55,13 +64,23 @@ const useStyles = makeStyles((theme) =>({
     cursor: 'pointer'
   }
 }));
-const HeaderAddition = (props) => {
+const HeaderAddition = () => {
   const classes = useStyles();
+  const history = useHistory();
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.getIn(['login', 'isLogin']))
   const isLoginActive = useSelector(state => state.getIn(['header', 'isLoginActive']));
+  const isWritingActive = useSelector(state => state.getIn(['header', 'isWritingActive']));
+  const title = useSelector(state => state.getIn(['writing', 'title']));
+  const body = useSelector(state => state.getIn(['writing', 'body']));
+  
   function handleLogout() {
     dispatch(actionCreators.logoutAction());
+  }
+
+  function handleClickPublish() {
+    dispatch(writingActionCreators.loadArticleAction({ title, body }));
+    history.push(URI.HOME);
   }
 
   return (
@@ -71,9 +90,7 @@ const HeaderAddition = (props) => {
           <div className={classes.text} onClick={handleLogout}><LogoutOutlinedIcon className={classes.logIcon}/></div> :
           <NavLink className={classes.text} to={URI.LOGIN}><LoginOutlinedIcon className={isLoginActive ? classes.logIconActive : classes.logIcon}/></NavLink>}
       </div>
-      <NavLink className={`${classes.btn} ${classes.writting}`} to={URI.WRITING}>
-        <span className={`iconfont`}>&#xe6eb;</span>
-      </NavLink>
+      <div className={`${classes.btn} ${isWritingActive ? classes.publish : ''}`}>{isWritingActive ? <div onClick={handleClickPublish}>发布</div> : <NavLink className={classes.link} to={URI.WRITING}><span className={`iconfont`}>&#xe6eb;</span></NavLink>}</div>
     </div>
   );
 }

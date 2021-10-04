@@ -99,10 +99,7 @@ const List = () => {
           )
         })
       }
-      <div className={classes.title}>
-
-      </div>
-
+      {/* <div className={classes.title}></div> */}
     </div>
   );
 }
