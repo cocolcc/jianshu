@@ -2,7 +2,8 @@ import { makeStyles } from '@material-ui/core';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { actionCreators } from '../../store/writing';
 import { useSelector, useDispatch } from 'react-redux';
-// import { actionCreators as headerActionCreators} from '../../store/header';
+import { useEffect } from 'react';
+import { actionCreators as headerActionCreators} from '../../store/header';
 // import { useEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +38,12 @@ const Writing = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const article = useSelector(state => state.getIn(['writing', 'article']));
+
+  useEffect(
+    () => {
+      dispatch(headerActionCreators.activeWritingAction());
+    }, [dispatch]
+  );
 
   const handleChangeArticle = () => (event) => {
     dispatch(actionCreators.storeArticleAction(event.target.value));

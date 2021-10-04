@@ -8,6 +8,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators } from '../../store/login';
+import { useEffect } from 'react';
+import { actionCreators as headerActionCreators } from '../../store/header';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import * as URI from '../../uri'
@@ -49,6 +51,11 @@ const Login = (props) => {
   const isLogin = useSelector(state => state.getIn(['login', 'isLogin']));
   const errMsg = useSelector(state => state.getIn(['login', 'errMsg']));
   const showPassword = useSelector(state => state.getIn(['login', 'showPassword']));
+
+  useEffect(() => {
+    dispatch(headerActionCreators.activeLoginAction());
+  }, [dispatch]);
+  
   if (isLogin) {
     props.history.push(URI.HOME);
   }
@@ -91,7 +98,7 @@ const Login = (props) => {
           />         
         </FormControl>
         <FormControl sx={{ width: '100%', margin: '10px 0 20px 0'}} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <InputLabel htmlFor="outlined-adornment-password">密码</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
@@ -109,7 +116,7 @@ const Login = (props) => {
                 </IconButton>
               </InputAdornment>
             }
-            label="Password"
+            label="密码"
           /> 
         </FormControl>
         <div className={classes.loginSubBtn} onClick={handleClickSubmit}>提交</div>

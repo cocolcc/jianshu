@@ -5,6 +5,7 @@ import { reducer as detailReducer } from "./detail";
 import { reducer as loginReducer } from "./login";
 import { reducer as writingReducer } from "./writing";
 import { reducer as followingReducer } from "./following";
+import { reducer as messageReducer} from './message';
 
 const rootReducer = combineReducers({
   header: headerReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   detail: detailReducer,
   login: loginReducer,
   writing: writingReducer,
-  following: followingReducer
+  following: followingReducer,
+  message: messageReducer
 })
 
 export default rootReducer;

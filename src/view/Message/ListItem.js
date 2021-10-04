@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.primary,
     fontWeight: '800',
   },
-  info: {
+  msg: {
     margin: '10px 0 0 20px',
     color: '#fff',
   }
@@ -26,15 +26,15 @@ const useStyles = makeStyles((theme) => ({
 
 const ListItem = (props) => {
   const classes = useStyles();
-  const info = props.info;
-  const avtar = info.nickname.substr(0, 1).toUpperCase();
+  const value = props.value;
+  const avtar = value.nickname.substr(0, 1).toUpperCase();
   
   return (
     <div className={classes.listItemWrapper}>
       <Avatar>{avtar}</Avatar>
       <div>
-        <div className={classes.nickname}>{info.nickname}</div>
-        <div className={classes.info}>{info.intro}</div>
+        <div className={classes.nickname}>{value.nickname}</div>
+        <div className={classes.msg}>{value.msg}</div>
       </div>
     </div>
   )

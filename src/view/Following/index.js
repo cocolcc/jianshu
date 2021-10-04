@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import ListItem from './ListItem';
 
 const useStyles = makeStyles({
-  followinglWrapper: {
+  followingWrapper: {
     width: '640px',
     margin: '0 auto',
     marginTop: '40px'
@@ -17,15 +17,15 @@ const Following = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const followingInfo = useSelector(state => state.getIn(['following', 'followingInfo']));
-  console.log(followingInfo.toJS());
   useEffect(() => {
     dispatch(headerActionCreators.activeFollowingAction());
     dispatch(followingActionCreators.fetchFollowingInfoAction());
-  }, [dispatch]);
-  
+  }, [dispatch]);  
   return (
-    <div className={classes.followinglWrapper}>
-      <ListItem></ListItem>
+    <div className={classes.followingWrapper}>
+      {followingInfo.map((item, index) => {
+        return (<ListItem key={index} info={item.toJS()}/>);
+      })}
     </div>
   );
 }

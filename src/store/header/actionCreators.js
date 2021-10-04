@@ -8,6 +8,10 @@ export const searchBlurAction = () => ({
   type: actionTypes.SEARCH_BLUR
 })
 
+export const taggleSearchAction = () => ({
+  type: actionTypes.TAGGLE_SEARCH
+})
+
 export const fetchSearchListAction = () => ({
   type: actionTypes.FETCH_LIST,
 })
@@ -40,4 +44,16 @@ export const activeFollowingAction = () => ({
 
 export const activeMessageAction = () => ({
   type: actionTypes.ACTIVE_MESSAGE,
+})
+
+export const activeLoginAction = () => ({
+  type: actionTypes.ACTIVE_LOGIN,
+})
+
+export const activeLogoutAction = () => ({
+  type: actionTypes.ACTIVE_LOGOUT,
+})
+
+export const activeWritingAction = () => ({
+  type: actionTypes.ACTIVE_WRITING,
 })

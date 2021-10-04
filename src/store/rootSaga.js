@@ -5,6 +5,7 @@ import { saga as detailSaga } from './detail';
 import { saga as loginSaga } from './login';
 import { saga as writingSaga } from './writing';
 import { saga as followingSaga } from './following';
+import { saga as messageSaga } from './message';
 
 const forkSagas = [];
 const sagas = [
@@ -13,7 +14,8 @@ const sagas = [
   detailSaga,
   loginSaga,
   writingSaga,
-  followingSaga
+  followingSaga,
+  messageSaga
 ];
 sagas.forEach(saga => {
   forkSagas.push(fork(saga))

@@ -3,6 +3,8 @@ import { actionCreators } from '../../store/login';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as URI from '../../uri';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 const useStyles = makeStyles((theme) =>({
   HeaderAdditionWrapper: {
@@ -11,20 +13,21 @@ const useStyles = makeStyles((theme) =>({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  aaIcon: {
-    fontSize: '19px',
-    color: '#969696',
-    marginRight: '25px',
+  logIcon: {
+    color: theme.flat
+  },
+  logIconActive: {
+    color: theme.primary
   },
   btn: {
     height: '38px',
-    width: '65px',
+    width: '38px',
     lineHeight: '38px',
     textAlign: 'center',
     border: `1px solid ${theme.primary}`,
-    borderRadius: '19px',
-    padding: '0 20px',
-    marginRight: '25px',
+    borderRadius: '25px',
+    // padding: '0 20px',
+    marginRight: '30px',
     fontSize: '14px',
   },
   userRegWrapper: {
@@ -56,20 +59,20 @@ const HeaderAddition = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state.getIn(['login', 'isLogin']))
-
+  const isLoginActive = useSelector(state => state.getIn(['header', 'isLoginActive']));
   function handleLogout() {
     dispatch(actionCreators.logoutAction());
   }
 
   return (
     <div className={classes.HeaderAdditionWrapper}>
-      <span className={ `iconfont ${classes.aaIcon}` }>&#xe636;</span>
       <div className={classes.userRegWrapper}>
-        {isLogin ? <div className={classes.text} onClick={handleLogout}>退出</div> : <NavLink className={classes.text} to={URI.LOGIN}>登录</NavLink>}
+        {isLogin ?
+          <div className={classes.text} onClick={handleLogout}><LogoutOutlinedIcon className={classes.logIcon}/></div> :
+          <NavLink className={classes.text} to={URI.LOGIN}><LoginOutlinedIcon className={isLoginActive ? classes.logIconActive : classes.logIcon}/></NavLink>}
       </div>
       <NavLink className={`${classes.btn} ${classes.writting}`} to={URI.WRITING}>
         <span className={`iconfont`}>&#xe6eb;</span>
-        {' 写文章'}
       </NavLink>
     </div>
   );

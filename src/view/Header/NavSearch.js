@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { actionCreators }  from '../../store/header';
 import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import * as URI from '../../uri';
 
 const useclassess = makeStyles((theme) => ({
@@ -12,22 +13,25 @@ const useclassess = makeStyles((theme) => ({
   },
   navSearch: {
     transition: 'all 0.2s ease-in',
-    width: '120px',
-    margin: '0 20px',
-    padding: '0 40px 0 20px',
+    width: '0px',
+    margin: '-3px 10px 0 0px',
+    // padding: '0 40px 0 20px',
+    padding: '0 19px 0 19px',
     height: '38px',
     color: '#666',
     outline: 'none',
     border: 'none',
     borderRadius: '19px',
-    background: '#eee',
+    // background: '#eee',
     '&::placeholder': {
       color: '#999',
-      fontSize: '14px',
-    },
-    '&$focus': {
-      width: '200px',
+      fontSize: '16px',
+      fontWeight: '400'
     }
+  },
+  isSearch: {
+    width: '100px',
+    // background: '#3C8DAD',
   },
   searchInfo: {
     position: 'absolute',
@@ -40,17 +44,17 @@ const useclassess = makeStyles((theme) => ({
     zIndex: 2
   },
   searchIcon: {
+    color: theme.flat,
     transition: 'all 0.2s ease-in',
     position: 'absolute',
     width: '30px',
     lineHeight: '30px',
     textAlign: 'center',
     borderRadius: '15px',
-    right: '24px',
-    top: '4px',
+    right: '15px',
+    top: '3px',
     '&$focus': {
-      background: '#777',
-      color: '#fff',
+      color: theme.primary,
     }
   },
   searchInfoHeader: {
@@ -93,8 +97,10 @@ const useclassess = makeStyles((theme) => ({
 }));
 const NavSearch = () => {
   const [angle, setAngle] = useState(0);
+  // const [searchFoucus, setSearchFocus] = useState(false);
   const classes = useclassess(angle);
   const isFocus = useSelector(state => state.getIn(['header', 'isFocus']));
+  const isSearch = useSelector(state => state.getIn(['header', 'isSearch']))
   const list = useSelector(state => state.getIn(['header', 'list']));
   const isMouseIn = useSelector(state => state.getIn(['header', 'isMouseIn']));
   const currentPage = useSelector(state => state.getIn(['header', 'currentPage']));
@@ -104,6 +110,10 @@ const NavSearch = () => {
   function inputOnFocus() {
     (list.size === 0) && dispatch(actionCreators.fetchSearchListAction());
     dispatch(actionCreators.searchFocusAction());
+  }
+
+  function handleSearch() {
+    dispatch(actionCreators.taggleSearchAction());
   }
 
   function inputOnBlur() {
@@ -162,13 +172,14 @@ const NavSearch = () => {
   
   return (
     <div className={classes.navSearchWrapper}>
+
       <input
-        className={`${classes.navSearch} ${isFocus ? classes.focus : ''}`}
+        className={`${classes.navSearch} ${isSearch ? classes.isSearch : ''}`}
         placeholder={'搜索'}
         onBlur={ inputOnBlur }
         onFocus={ inputOnFocus }
       />
-      <span className={`iconfont ${classes.searchIcon} ${isFocus ? classes.focus : ''}`}>&#xe65b;</span>
+      <SearchOutlinedIcon onClick={handleSearch} className={`${classes.searchIcon} ${isSearch ? classes.focus : ''}`}/>
       {showSearchInfo()}
     </div>
   );

@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   wrapper: {
     display: 'flex',
-    borderBottom: '1px solid #f0f0f0',
     justifyContent: 'center',
   },
   headerWrapper: {

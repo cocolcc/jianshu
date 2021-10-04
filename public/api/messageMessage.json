@@ -4,51 +4,51 @@
     "id": 1,
     "Avatar": "",
     "nickname": "nickname1",
-    "intro": "intro1"
+    "msg": "msg1"
   }, {
     "id": 2,
     "Avatar": "",
     "nickname": "nickname2",
-    "intro": "intro2"
+    "msg": "msg2"
   },{
     "id": 3,
     "Avatar": "",
     "nickname": "nickname3",
-    "intro": "intro3"
+    "msg": "msg3"
   }, {
     "id": 4,
     "Avatar": "",
     "nickname": "nickname4",
-    "intro": "intro4"
+    "msg": "msg4"
   }, {
     "id": 5,
     "Avatar": "",
     "nickname": "nickname5",
-    "intro": "intro5"
+    "msg": "msg5"
   }, {
     "id": 6,
     "Avatar": "",
     "nickname": "nickname6",
-    "intro": "intro6"
+    "msg": "msg6"
   }, {
     "id": 7,
     "Avatar": "",
     "nickname": "nickname7",
-    "intro": "intro7"
+    "msg": "msg7"
   }, {
     "id": 8,
     "Avatar": "",
     "nickname": "nickname8",
-    "intro": "intro8"
+    "msg": "msg8"
   }, {
     "id": 9,
     "Avatar": "",
     "nickname": "nickname9",
-    "intro": "intro9"
+    "msg": "msg9"
   }, {
     "id": 10,
     "Avatar": "",
     "nickname": "nickname10",
-    "intro": "intro10"
+    "msg": "msg10"
   }]
 }

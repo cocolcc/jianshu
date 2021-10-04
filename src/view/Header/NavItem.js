@@ -2,10 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   navItem: {
-    padding: '0 20px',
+    padding: '0 10px',
     whiteSpace: 'nowrap',
     fontSize: 17,
-    cursor: 'pointer'
+    cursor: 'pointer',
+    color: theme.flat
   },
   active: {
     color: theme.primary,

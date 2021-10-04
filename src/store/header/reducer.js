@@ -3,13 +3,17 @@ import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
   isFocus: false,
+  isSearch: false,
   isMouseIn: false,
   list: [],
   currentPage: 1,
   totalPage: 0,
-  isDiscoveryActive: true,
+  isDiscoveryActive: false,
   isFollowingActive: false,
-  isMessageActive: false
+  isMessageActive: false,
+  isLoginActive: false,
+  isLogoutActive: false,
+  isWritingActive: false
 })
 
 const headerReducer = (state = defaultState, action) => {
@@ -18,6 +22,8 @@ const headerReducer = (state = defaultState, action) => {
       return state.set('isFocus', true);
     case actionTypes.SEARCH_BLUR:
       return state.set('isFocus', false);
+    case actionTypes.TAGGLE_SEARCH:
+      return state.set('isSearch', !state.get('isSearch'));
     case actionTypes.STORE_LIST:
       return state.merge({
         list: action.data.getIn(['list']),
@@ -33,19 +39,55 @@ const headerReducer = (state = defaultState, action) => {
       return state.merge({
         isDiscoveryActive: true,
         isFollowingActive: false,
-        isMessageActive: false
+        isMessageActive: false,
+        isLoginActive: false,
+        isLogoutActive: false,
+        isWritingActive: false
       });
     case actionTypes.ACTIVE_FOLLOWING:
       return state.merge({
         isDiscoveryActive: false,
         isFollowingActive: true,
-        isMessageActive: false
+        isMessageActive: false,
+        isLoginActive: false,
+        isLogoutActive: false,
+        isWritingActive: false
       });
     case actionTypes.ACTIVE_MESSAGE:
       return state.merge({
         isDiscoveryActive: false,
         isFollowingActive: false,
-        isMessageActive: true
+        isMessageActive: true,
+        isLoginActive: false,
+        isLogoutActive: false,
+        isWritingActive: false
+      });
+    case actionTypes.ACTIVE_LOGIN:
+      return state.merge({
+        isDiscoveryActive: false,
+        isFollowingActive: false,
+        isMessageActive: false,
+        isLoginActive: true,
+        isLogoutActive: false,
+        isWritingActive: false
+      });
+    case actionTypes.ACTIVE_LOGOUT:
+      return state.merge({
+        isDiscoveryActive: false,
+        isFollowingActive: false,
+        isMessageActive: false,
+        isLoginActive: false,
+        isLogoutActive: true,
+        isWritingActive: false
+      });
+    case actionTypes.ACTIVE_WRITING:
+      return state.merge({
+        isDiscoveryActive: false,
+        isFollowingActive: false,
+        isMessageActive: false,
+        isLoginActive: false,
+        isLogoutActive: false,
+        isWritingActive: true
       });
     default:
       return state;
