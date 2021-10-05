@@ -10,9 +10,8 @@ import { useEffect } from 'react';
 const useStyles = makeStyles((theme) => ({
   homeWrapper: {
     display: 'flex',
-    justifyContent: 'space-between',
-    maxWidth: '1400px',
-    // width: '960px',
+    justifyContent: 'start',
+    maxWidth: '1200px',
     margin: '20px auto',
   },
   homeLeftWrapper: {
@@ -26,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '50px',
   },
   homeRightWrapper: {
+    paddingTop: '20px',
+    paddingLeft: '100px',
     width: '280px',
   },
   ReadMoreBtn: {
@@ -44,9 +45,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: '25px',
     right: '40px',
     bottom: '40px',
-    border: `1px solid ${theme.flat}`,
+    color: '#fff',
+    background: theme.primary,
     height: '50px',
     width: '50px',
     cursor: 'pointer',
