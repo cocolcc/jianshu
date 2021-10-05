@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
   homeWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '960px',
+    maxWidth: '1400px',
+    // width: '960px',
     margin: '20px auto',
   },
   homeLeftWrapper: {
@@ -55,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const articlePage = useSelector(state => state.getIn(['home', 'articlePage']));
   const showScrollToTop = useSelector(state => state.getIn(['home', 'showScrollToTop']));
   useEffect(
     () => {
@@ -73,9 +73,7 @@ const Home = () => {
       });
     }, [dispatch]
   );
-  function loadMoreList() {
-    dispatch(actionCreators.fetchMoreArticleListAction(articlePage));
-  }
+
   function scrollToTop() {
     window.scrollTo(0,0);
   }
@@ -85,7 +83,6 @@ const Home = () => {
       {showScrollToTop ? <div className={classes.scrollToTop} onClick={scrollToTop}><span className={'iconfont'}>&#xe85f;</span></div> : null}
       <div className={classes.homeLeftWrapper}>
         <List />
-        <button className={classes.ReadMoreBtn} onClick={loadMoreList}>阅读更多</button>
         <div className={classes.homeLeftFooter}>关于简书 · 联系我们 · 加入我们 · 简书出版 · 品牌与徽标 · 帮助中心 · 合作伙伴 · 涂檬-原创插画社区</div>
       </div>
       <div className={classes.homeRightWrapper}>

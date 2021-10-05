@@ -17,7 +17,7 @@ function* fetchDetail(action) {
         id: 'lcc',
         title: currentTitle,
         imgUrl: '',
-        paragraph: [currentBody]
+        paragraph: currentBody.split('\n')
       }
       const action = actionCreators.storeDetailAction(fromJS(data));
       yield put(action);

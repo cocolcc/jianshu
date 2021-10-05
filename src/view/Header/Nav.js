@@ -33,9 +33,9 @@ const Nav = () => {
   
   return (
     <div className={classes.navWrapper}>
-      <NavLink className={classes.link} to={URI.HOME}><NavItem isActive={isDiscoveryActive}><CameraOutlinedIcon/></NavItem></NavLink>
-      <NavLink className={classes.link} to={URI.FOLLOWING}><NavItem isActive={isFollowingActive}><GroupOutlinedIcon/></NavItem></NavLink>
-      <NavLink className={classes.link} to={URI.MESSAGE}><NavItem isActive={isMessageActive}><MessageOutlinedIcon/></NavItem></NavLink>
+      <NavLink className={classes.link} to={URI.HOME}><NavItem isActive={isDiscoveryActive}><CameraOutlinedIcon/>发现</NavItem></NavLink>
+      <NavLink className={classes.link} to={URI.FOLLOWING}><NavItem isActive={isFollowingActive}><GroupOutlinedIcon/>关注</NavItem></NavLink>
+      <NavLink className={classes.link} to={URI.MESSAGE}><NavItem isActive={isMessageActive}><MessageOutlinedIcon/>消息</NavItem></NavLink>
       <NavSearch />
     </div>
   )

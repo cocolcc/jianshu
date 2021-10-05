@@ -3,10 +3,11 @@ import Nav from './Nav';
 import HeaderAddition from './HeaderAddition'
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   wrapper: {
     display: 'flex',
     justifyContent: 'center',
+    borderBottom: '1px solid #f0f0f0'
   },
   headerWrapper: {
     width: '100%',
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
     height: '56px',
     maxWidth: '1450px',
   }
-});
+}));
 
 const Header = () => {
   const classes = useStyles();

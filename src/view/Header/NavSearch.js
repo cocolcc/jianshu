@@ -14,7 +14,7 @@ const useclassess = makeStyles((theme) => ({
   navSearch: {
     transition: 'all 0.2s ease-in',
     width: '0px',
-    margin: '-3px 10px 0 0px',
+    margin: '0 10px 0 0px',
     // padding: '0 40px 0 20px',
     padding: '0 19px 0 19px',
     height: '38px',
@@ -24,7 +24,7 @@ const useclassess = makeStyles((theme) => ({
     borderRadius: '19px',
     // background: '#eee',
     '&::placeholder': {
-      color: '#999',
+      color: theme.flat,
       fontSize: '16px',
       fontWeight: '400'
     }
@@ -52,7 +52,7 @@ const useclassess = makeStyles((theme) => ({
     textAlign: 'center',
     borderRadius: '15px',
     right: '15px',
-    top: '3px',
+    top: '7px',
     '&$focus': {
       color: theme.primary,
     }
@@ -172,7 +172,6 @@ const NavSearch = () => {
   
   return (
     <div className={classes.navSearchWrapper}>
-
       <input
         className={`${classes.navSearch} ${isSearch ? classes.isSearch : ''}`}
         placeholder={'搜索'}
