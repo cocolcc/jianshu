@@ -6,7 +6,11 @@ const defaultState = fromJS({
   recommendList: [],
   recommendWriters: [],
   articlePage: 1,
-  showScrollToTop: false
+  showScrollToTop: false,
+  articleListLoading: true,
+  addArticleListLoading: false,
+  recommendListLoading: true,
+  recommendWritersListLoading: true,
 })
 
 const homeReducer = (state = defaultState, action) => {
@@ -24,6 +28,22 @@ const homeReducer = (state = defaultState, action) => {
       return state.set('recommendWriters', action.data);
     case actionTypes.TAGGLE_SCROLL_TOP:
       return state.set('showScrollToTop', action.data);
+    case actionTypes.ARTICLE_LIST_LOADING_ON:
+      return state.set('articleListLoading', true);
+    case actionTypes.ARTICLE_LIST_LOADING_OFF:
+      return state.set('articleListLoading', false);
+    case actionTypes.ADD_ARTICLE_LIST_LOADING_ON:
+      return state.set('addArticleListLoading', true);
+    case actionTypes.ADD_ARTICLE_LIST_LOADING_OFF:
+      return state.set('addArticleListLoading', false);
+    case actionTypes.RECOMMEND_LIST_LOADING_ON:
+      return state.set('recommendListLoading', true);
+    case actionTypes.RECOMMEND_LIST_LOADING_OFF:
+      return state.set('recommendListLoading', false);
+    case actionTypes.RECOMMEND_WRITERS_LIST_LOADING_ON:
+      return state.set('recommendWritersListLoading', true);
+    case actionTypes.RECOMMEND_WRITERS_LIST_LOADING_OFF:
+      return state.set('recommendWritersListLoading', false);
     default:
       return state;
   }
