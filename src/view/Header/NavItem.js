@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   navItem: {
-    padding: '0 10px',
+    padding: '0 20px',
     whiteSpace: 'nowrap',
     fontSize: 17,
     cursor: 'pointer',

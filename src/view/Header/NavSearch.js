@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import * as URI from '../../uri';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const useclassess = makeStyles((theme) => ({
   focus: {},
@@ -14,7 +15,7 @@ const useclassess = makeStyles((theme) => ({
   navSearch: {
     transition: 'all 0.2s ease-in',
     width: '0px',
-    margin: '0 10px 0 0px',
+    margin: '0 10px 0 10px',
     // padding: '0 40px 0 20px',
     padding: '0 19px 0 19px',
     height: '38px',
@@ -36,12 +37,13 @@ const useclassess = makeStyles((theme) => ({
   searchInfo: {
     position: 'absolute',
     padding: '20px 20px',
-    top: '56px',
+    top: '48px',
     left: '0px',
     width: '240px',
     background: '#fff',
-    boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
-    zIndex: 2
+    boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
+    zIndex: 2,
+    borderRadius: '10px',
   },
   searchIcon: {
     color: theme.flat,
@@ -62,11 +64,11 @@ const useclassess = makeStyles((theme) => ({
     lineHeight: '17px',
     textAlign: 'center',
     marginBottom: '10px',
-    justifyContent: 'space-between',
-    searchInfoTitle: {
-      fontSize: '14px',
-      color: theme.flat,
-    }
+    justifyContent: 'space-between'
+  },
+  searchInfoTitle: {
+    fontSize: '14px',
+    color: theme.title,
   },
   searchInfoItem: {
     float: 'left',
@@ -74,24 +76,34 @@ const useclassess = makeStyles((theme) => ({
     textDecoration: 'none',
     lineHeight: '20px',
     fontSize: '12px',
-    borderRadius: '3px',
+    borderRadius: '15px',
     padding: '0 5px',
     marginTop: '10px',
     marginRight: '10px',
-    border: '1px solid #ddd',
-    color: '#787878',
+    border: `1px solid ${theme.flat}`,
+    color: theme.flat,
+    '&:hover': {
+      color: theme.title,
+      border: `1px solid ${theme.title}`,
+    },
   },
   searchInfoSwitch: {
+    display: 'flex',
+    alignItems: 'center',
     cursor: 'pointer',
     fontSize: '13px',
+    lineHeight: '24px',
+    textAlign: 'center',
     color: theme.flat,
+    '&:hover': {
+      color: theme.title,
+    },
   },
   spin: {
-    display: 'block',
     float: 'left',
-    marginRight: '2px',
     transition: 'all 0.2s ease-in',
     transformOrigin: 'center center',
+    height: '24px',
     transform: angle => `rotate(${angle}deg)`,
   }
 }));
@@ -118,6 +130,7 @@ const NavSearch = () => {
 
   function inputOnBlur() {
     dispatch(actionCreators.searchBlurAction());
+    // dispatch(actionCreators.searchOffAction());
   }
 
   function handelOnMouseEnter() {
@@ -156,10 +169,9 @@ const NavSearch = () => {
               className={classes.searchInfoSwitch}
               onClick={changePage}
             >
-              <span
-                className={`iconfont ${classes.spin}`}
-              >&#xe851;</span>
-              换一批
+              <div className={ classes.spin}><RefreshIcon /></div>
+              {/* <span className={`iconfont ${classes.spin}`}>&#xe851;</span> */}
+              <div>换一批</div>
             </div>
           </div>
           {showList}

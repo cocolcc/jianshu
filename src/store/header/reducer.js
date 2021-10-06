@@ -24,6 +24,10 @@ const headerReducer = (state = defaultState, action) => {
       return state.set('isFocus', false);
     case actionTypes.TAGGLE_SEARCH:
       return state.set('isSearch', !state.get('isSearch'));
+    case actionTypes.SEARCH_ON:
+      return state.set('isSearch', true);
+    case actionTypes.SEARCH_OFF:
+      return state.set('isSearch', false);
     case actionTypes.STORE_LIST:
       return state.merge({
         list: action.data.getIn(['list']),

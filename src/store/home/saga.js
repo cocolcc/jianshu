@@ -19,8 +19,8 @@ function* fetchArticleList() {
     //为了模拟后台而mock的功能：显示刚刚提交的文章
     let currentTitle = yield select(state => state.getIn(['writing', 'title']));
     let currentBody = yield select(state => state.getIn(['writing', 'body']));
-    let currentIsLoaded = yield select(state => state.getIn(['writing', 'isLoaded']));
-    if (currentIsLoaded) {
+    let currentIsUploaded = yield select(state => state.getIn(['writing', 'isUploaded']));
+    if (currentIsUploaded) {
       articleList.splice(0, 0, {
       id: 'lcc',
       title: currentTitle,

@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import CameraOutlinedIcon from '@mui/icons-material/CameraOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
-import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
+// import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import * as URI from '../../uri';
 
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +36,7 @@ const Nav = () => {
     <div className={classes.navWrapper}>
       <NavLink className={classes.link} to={URI.HOME}><NavItem isActive={isDiscoveryActive}><CameraOutlinedIcon/>发现</NavItem></NavLink>
       <NavLink className={classes.link} to={URI.FOLLOWING}><NavItem isActive={isFollowingActive}><GroupOutlinedIcon/>关注</NavItem></NavLink>
-      <NavLink className={classes.link} to={URI.MESSAGE}><NavItem isActive={isMessageActive}><MessageOutlinedIcon/>消息</NavItem></NavLink>
+      <NavLink className={classes.link} to={URI.MESSAGE}><NavItem isActive={isMessageActive}><NotificationsNoneIcon/>消息</NavItem></NavLink>
       <NavSearch />
     </div>
   )

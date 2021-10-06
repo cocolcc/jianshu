@@ -1,8 +1,10 @@
 //Sync
 export const STORE_TITLE = 'writing_store_title';
 export const STORE_BODY = 'writing_store_body';
-export const LOAD_SUCCESSFUL = 'writing_save_successful';
-export const NEED_LOAD = 'writing_need_save';
+export const UPLOAD_SUCCESSFUL = 'writing_upload_successful';
+export const NEED_UPLOAD = 'writing_need_upload';
+export const UPLOAD_LOADING_ON = 'writing_upload_loading_on';
+export const UPLOAD_LOADING_OFF = 'writing_upload_loading_off';
 
 //Async
-export const LOAD_ARTICLE = 'writing_load_article';
+export const UPLOAD_ARTICLE = 'writing_upload_article';

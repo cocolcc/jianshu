@@ -1,6 +1,8 @@
 //Sync
 export const SEARCH_FOCUS = 'header_search_focus';
 export const TAGGLE_SEARCH = 'header_taggle_search';
+export const SEARCH_ON = 'header_search_on';
+export const SEARCH_OFF = 'header_search_off';
 export const SEARCH_BLUR = 'header_search_blur';
 export const STORE_LIST = 'header_store_list';
 export const MOUSE_IN = 'header_mouse_in';
