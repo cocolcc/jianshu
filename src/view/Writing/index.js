@@ -2,12 +2,13 @@ import { makeStyles } from '@material-ui/core';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { actionCreators } from '../../store/writing';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, forwardRef } from 'react';
+import { useEffect, forwardRef, useState } from 'react';
 import { useHistory } from 'react-router';
 import { actionCreators as headerActionCreators } from '../../store/header';
 import * as URI from '../../uri';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 const useStyles = makeStyles((theme) => ({
   writingWrapper: {
@@ -60,6 +61,8 @@ const Writing = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
+  const [titleVarify, setTitleVarify] = useState(true);
+  const [bodyVarify, setBodyVarify] = useState(true);
   const title = useSelector(state => state.getIn(['writing', 'title']));
   const body = useSelector(state => state.getIn(['writing', 'body']));
   const uploadLoading = useSelector(state => state.getIn(['writing', 'uploadLoading']));
@@ -69,6 +72,22 @@ const Writing = () => {
     () => {
       dispatch(headerActionCreators.activeWritingAction());
     }, [dispatch]
+  );
+
+  useEffect(
+    () => {
+      if (title) {
+        setTitleVarify(true);
+      }
+    }, [title]
+  );
+
+  useEffect(
+    () => {
+      if (body) {
+        setBodyVarify(true);
+      }
+    }, [body]
   );
 
   const handleChangeTitle = () => (event) => {
@@ -82,6 +101,14 @@ const Writing = () => {
   }
 
   function handleClickPublish() {
+    if (!title) {
+      setTitleVarify(false);
+      return;
+    }
+    if (!body) {
+      setBodyVarify(false);
+      return;
+    }
     dispatch(actionCreators.uploadArticleAction({ title, body }));
     setTimeout(() => {
       history.push(URI.HOME);
@@ -90,28 +117,38 @@ const Writing = () => {
   
   return (
     <div className={classes.writingWrapper}>
+      {!titleVarify &&
+        <Stack sx={{ width: '680px' }} spacing={2}>
+          <MuiAlert severity="error">标题不能为空</MuiAlert>
+        </Stack>
+      }
+      {!bodyVarify &&
+        <Stack sx={{ width: '680px' }} spacing={2}>
+          <MuiAlert severity="error">正文不能为空</MuiAlert>
+        </Stack>
+      }
       <Snackbar open={uploadLoading} autoHideDuration={3000}>
         <Alert severity="info" sx={{ width: '200px' }}>
-          Article uploading...
+          正在上传文章...
         </Alert>
       </Snackbar>
       <Snackbar open={isUploaded} autoHideDuration={3000}>
         <Alert severity="success" sx={{ width: '200px' }}>
-          Article upload success!
+          文章上传成功!
         </Alert>
       </Snackbar>
       <div className={classes.scrollToTop} onClick={handleClickPublish}>发布</div>
       <TextareaAutosize
         aria-label="empty textarea"
         placeholder="输入标题..."
-        style={{ width: '100%', height: 80, borderStyle: 'none', outline: 'none', fontSize: 25, padding: '20px'}}
+        style={{ width: '100%', height: 80, borderStyle: 'none', outline: 'none', fontSize: 25, padding: '20px', resize: 'none'}}
         value={title}
         onChange={handleChangeTitle()}
       />
       <TextareaAutosize
         aria-label="empty textarea"
         placeholder="输入正文..."
-        style={{ width: '100%', height: 600, borderStyle: 'none', outline: 'none', fontSize: 18, background: '#F4F9F9', borderRadius: '15px', padding: '20px'}}
+        style={{ width: '100%', height: 600, borderStyle: 'none', outline: 'none', fontSize: 18, background: '#F4F9F9', borderRadius: '15px', padding: '20px', resize: 'none'}}
         value={body}
         onChange={handleChangeBody()}
       />
