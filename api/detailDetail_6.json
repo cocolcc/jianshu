@@ -1,0 +1,17 @@
+{
+	"success": true,
+	"data": {
+			"id": 6,
+			"title": "Files 使用体验：一款高颜值 Windows 第三方资源管理器",
+			"imgUrl": "https://upload-images.jianshu.io/upload_images/3821938-3cc16fe4572c1f9d.png?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+			"paragraph": [
+				"在我看来，Windows 自带的资源管理器一直都不太好用。所以，之前也和大家分享过一些增强工具，比如 PowerToys，QTTabBar 等。这些工具固然好用，但都是在原有的资源管理器上进行扩展，不排除相互冲突的可能，且工具一多便不利于管理。于是我发现了一款第三方资源管理器：Files，使用过后，发现这工具有点东西，和大家分享下。",
+				"可以看到，Files 的界面美观简洁，与 Windows 10 主题非常契合，用起来也是丝滑流畅。",
+				"我们知道，Windows 自带的资源管理器的预览窗格功能有限，查看某些文件着实不便。Files 支持文件预览，可以点击右上角的「切换预览窗格」按钮开启/关闭：",
+				"之前和大家介绍过一个小工具：QTTabBar，可以让我们以标签的形式管理目录，Files 同样支持。",
+				"不足之处",
+				"在上一章中，我和大家介绍了 Files 的基本功能，现在说（tu）说（cao） Files 不足的地方。",
+				"作为一个开源项目，Files 目前仍然有很多 bug。截取部分 GitHub 上反馈的 bug，大家随意感受下。"
+			]
+		}
+}

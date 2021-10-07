@@ -1,0 +1,14 @@
+{
+	"success": true,
+	"data": {
+			"id": 3,
+			"title": "OpenGL 基础变化",
+			"imgUrl": "https://upload-images.jianshu.io/upload_images/2283996-358261faba8426bd.png?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+			"paragraph": [
+				"OpenGL中涉及的基础变化:",
+				"模型变换其实就是物体通过平移、旋转、缩放的操作，将物体移动到你想要的位置的一个过程。",
+				"主要还是因为矩阵相乘采用的是矩阵的叉乘，而矩阵叉乘是不满足交换律的。",
+				"另外，在模型变换过程中，有两种观察方式，"
+			]
+		}
+}

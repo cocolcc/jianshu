@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "data": {
+    "users":[{
+      "id":7290998,
+      "slug":"4062aaeba322",
+      "nickname":"念远怀人",
+      "avatar_source":"https://upload.jianshu.io/users/upload_avatars/7290998/f64f5ef0-def0-4b26-beb3-b9d88f060ba0.jpg",
+      "total_likes_count":14584,
+      "total_wordage":702834,
+      "is_following_user":false
+    },{
+      "id":9988193,
+      "slug":"51b4ef597b53",
+      "nickname":"董克平日记",
+      "avatar_source":"https://upload.jianshu.io/users/upload_avatars/9988193/fc26c109-1ae6-4327-a298-2def343e9cd8.jpg",
+      "total_likes_count":5964,
+      "total_wordage":1275605,
+      "is_following_user":false
+    },{
+      "id":6539412,
+      "slug":"62fc150bab96",
+      "nickname":"琪官Kafka",
+      "avatar_source":"https://upload.jianshu.io/users/upload_avatars/6539412/acc6e5b7-6c12-4dc3-a930-0b6651429e93.jpg",
+      "total_likes_count":4389,
+      "total_wordage":216494,
+      "is_following_user":false
+    },{
+      "id":3730494,
+      "slug":"ffc565d738a3",
+      "nickname":"格列柯南",
+      "avatar_source":"https://upload.jianshu.io/users/upload_avatars/3730494/a5859e59-509d-4d2c-a594-d8d6e5c23d68.jpg",
+      "total_likes_count":18375,
+      "total_wordage":738474,
+      "is_following_user":false
+    },{
+      "id":5796592,
+      "slug":"86b81ed8e35c",
+      "nickname":"澜夜师兄",
+      "avatar_source":"https://upload.jianshu.io/users/upload_avatars/5796592/73837104-47e5-4fe9-a5be-054bd50b06f7.jpg",
+      "total_likes_count":2052,
+      "total_wordage":192272,
+      "is_following_user":false
+    }],
+    "total_count":46605
+  }
+}
