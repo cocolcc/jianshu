@@ -6,9 +6,15 @@ import { actionCreators as  headerActionCreators} from '../../store/header';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core';
 import { useEffect } from 'react';
+// import isWeekend from 'date-fns/isWeekend';
+// import TextField from '@mui/material/TextField';
+// import AdapterDateFns from '@mui/lab/AdapterDateFns';
+// import LocalizationProvider from '@mui/lab/LocalizationProvider';
+// import StaticDatePicker from '@mui/lab/StaticDatePicker';
 
 const useStyles = makeStyles((theme) => ({
   homeWrapper: {
+    overflowY: 'scroll',
     display: 'flex',
     justifyContent: 'start',
     maxWidth: '1200px',
@@ -60,6 +66,25 @@ const Home = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const showScrollToTop = useSelector(state => state.getIn(['home', 'showScrollToTop']));
+  // const [value, setValue] = useState(new Date());
+
+  // function showCalender() {
+  //   return (
+  //     <LocalizationProvider dateAdapter={AdapterDateFns}>
+  //       <StaticDatePicker
+  //         orientation="landscape"
+  //         openTo="day"
+  //         value={value}
+  //         shouldDisableDate={isWeekend}
+  //         onChange={(newValue) => {
+  //           setValue(newValue);
+  //         }}
+  //         renderInput={(params) => <TextField {...params} />}
+  //       />
+  //     </LocalizationProvider>
+  //   )
+  // }
+
   useEffect(
     () => {
       dispatch(headerActionCreators.activeDiscoveryAction());
@@ -89,6 +114,7 @@ const Home = () => {
         <div className={classes.homeLeftFooter}>关于简书 · 联系我们 · 加入我们 · 简书出版 · 品牌与徽标 · 帮助中心 · 合作伙伴 · 涂檬-原创插画社区</div>
       </div>
       <div className={classes.homeRightWrapper}>
+        {/* {showCalender()} */}
         <Topic />
         <Writer />
       </div>

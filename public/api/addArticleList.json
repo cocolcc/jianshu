@@ -8,7 +8,8 @@
 			"diamondNum": 1.6,
 			"auther":"Xpitz",
 			"commentsNum":9,
-			"likeNum":20
+			"likeNum":20,
+			"tag": ["windows"]
 		}, {
 			"id": 7,
 			"title": "太方便了！利用Python对批量Pdf转Word",
@@ -17,7 +18,8 @@
 			"diamondNum": 0.6,
 			"auther":"Python探究者",
 			"commentsNum":0,
-			"likeNum":9
+			"likeNum":9,
+			"tag": ["工作"]
 		}, {
 			"id": 8,
 			"title": "数据可视化的常用在线图表工具推荐",
@@ -26,7 +28,8 @@
 			"diamondNum": 0.8,
 			"auther":"程what",
 			"commentsNum":0,
-			"likeNum":13
+			"likeNum":13,
+			"tag": ["可视化"]
 		}, {
 			"id": 9,
 			"title": "“高颜值”网络图绘制工具-Cytoscape！",
@@ -35,6 +38,7 @@
 			"diamondNum": 0.8,
 			"auther":"诺禾致源",
 			"commentsNum":0,
-			"likeNum":8
+			"likeNum":8,
+			"tag": ["工具"]
 		}]
 }

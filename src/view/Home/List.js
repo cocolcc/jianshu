@@ -1,11 +1,12 @@
 import { actionCreators } from '../../store/home';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from './ListItem';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
+import { fromJS } from 'immutable';
 
 const useStyles = makeStyles((theme) => ({
   infiniteScrollfooter: {
@@ -24,13 +25,35 @@ const List = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const articleList = useSelector(state => state.getIn(['home', 'articleList']));
+  const searchTags = useSelector(state => state.getIn(['home', 'searchTags']));
   const articlePage = useSelector(state => state.getIn(['home', 'articlePage']));
   const addArticleListLoading = useSelector(state => state.getIn(['home', 'addArticleListLoading']));
   const articleListLoading = useSelector(state => state.getIn(['home', 'articleListLoading']));
+  const [filteredArticleList, setFilteredArticleList] = useState(fromJS([]));
 
   useEffect(() => {
+
     dispatch(actionCreators.fetchArticleListAction());
   }, [dispatch])
+
+  useEffect(() => {
+    if (!searchTags.size) {
+      setFilteredArticleList(articleList);
+      return;
+    } else {
+      let tempArticleList = [];
+      articleList.forEach((articleItem) => {
+        let isMarkArticle = false;
+        articleItem.get('tag').forEach((tagItem) => {
+          if (!isMarkArticle && searchTags.indexOf(tagItem) > -1) {
+            tempArticleList.push(articleItem);
+            isMarkArticle = true;
+          }
+        })
+      })
+      setFilteredArticleList(fromJS(tempArticleList));
+    }
+  }, [searchTags, articleList])
 
   function loadMoreList() {
     dispatch(actionCreators.fetchMoreArticleListAction(articlePage));
@@ -64,10 +87,15 @@ const List = () => {
   } else {
     return (
       <InfiniteScroll
-        dataLength={articleList.size}
+        dataLength={filteredArticleList.size}
         next={loadMoreList}
         style={{overflow: 'hidden'}}
         hasMore={true}
+        endMessage={
+          <p style={{ textAlign: 'center' }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
         loader={
           addArticleListLoading ?
           <Box sx={{ width: 300, margin: '20px auto'}}>
@@ -79,7 +107,7 @@ const List = () => {
         }
       >
       {
-        articleList.map((item, index) => {
+        filteredArticleList.map((item, index) => {
           return (
             <ListItem key={index} item={item} />
           )

@@ -88,6 +88,17 @@ const useStyles = makeStyles((theme) => ({
   },
   notLikeNum: {
     color: theme.flat,
+  },
+  tagWrapper: {
+    display: 'flex',
+    alignItems: 'cebter'
+  },
+  tag: {
+    color: theme.title,
+    background: theme.flatBackground,
+    borderRadius: '15px',
+    marginRight: '10px',
+    padding: '0 10px'
   }
 }));
 
@@ -107,6 +118,17 @@ const ListItem = (props) => {
         <NavLink className={classes.title} to={'/detail/' + item.get('id')}>{item.get('title')}</NavLink>
         <div className={classes.desc}>{item.get('desc')}</div>
         <div className={classes.footer}>
+          <div className={classes.tagWrapper}>
+            { item.get('tag') ? 
+              item.get('tag').map((item, index) => {
+                return (
+                  <div key={index} className={classes.tag}>
+                    { item }
+                  </div>
+                );
+              }) : null
+            }
+          </div>
           <div className={classes.footerItem}>
             <span>{item.get('auther')}</span>
           </div>

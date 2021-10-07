@@ -58,6 +58,16 @@ export const recommendWritersListLoadingOffAction = () => ({
   type: actionTypes.RECOMMEND_WRITERS_LIST_LOADING_OFF,
 });
 
+export const storeSearchTagsAction = (data) => ({
+  type: actionTypes.STORE_SEARCH_TAGS,
+  data
+});
+
+export const storeSearchTagsStringAction = (data) => ({
+  type: actionTypes.STORE_SEARCH_TAGS_STRING,
+  data
+});
+
 //Async
 export const fetchArticleListAction = () => ({
   type: actionTypes.FETCH_ARTICLE_LIST

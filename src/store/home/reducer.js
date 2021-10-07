@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import { fromJS } from 'immutable';
+import { filterEmptyValueInArray } from '../../utils/filterArray';
 
 const defaultState = fromJS({
   articleList: [],
@@ -11,6 +12,8 @@ const defaultState = fromJS({
   addArticleListLoading: false,
   recommendListLoading: true,
   recommendWritersListLoading: true,
+  searchTags: [],
+  searchTagsString: '',
 })
 
 const homeReducer = (state = defaultState, action) => {
@@ -28,6 +31,16 @@ const homeReducer = (state = defaultState, action) => {
       return state.set('recommendWriters', action.data);
     case actionTypes.TAGGLE_SCROLL_TOP:
       return state.set('showScrollToTop', action.data);
+    case actionTypes.STORE_SEARCH_TAGS:
+      return state.merge({
+        searchTags: action.data,
+        searchTagsString: action.data.toJS().join(' ')
+      });
+    case actionTypes.STORE_SEARCH_TAGS_STRING:
+      return state.merge({
+        searchTagsString: action.data,
+        searchTags: fromJS(filterEmptyValueInArray(action.data.split(' ')))
+      })
     case actionTypes.ARTICLE_LIST_LOADING_ON:
       return state.set('articleListLoading', true);
     case actionTypes.ARTICLE_LIST_LOADING_OFF:

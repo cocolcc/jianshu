@@ -7,7 +7,7 @@ import Skeleton from '@mui/material/Skeleton';
 
 const useStyles = makeStyles({
   topicWrapper: {
-
+    
   },
   itemWrapper: {
     width: '100%',

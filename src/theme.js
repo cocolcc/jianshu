@@ -4,6 +4,7 @@ const theme = {
   title: '#495C69',
   warnning: '#f44336',
   flat: '#aab8c2',
+  flatBackground: '#EFEFEF',
 }
 
 export default theme

@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { actionCreators }  from '../../store/header';
+import { actionCreators as homeActionCreators }  from '../../store/home';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink } from 'react-router-dom';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import * as URI from '../../uri';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
 const useclassess = makeStyles((theme) => ({
@@ -13,17 +12,15 @@ const useclassess = makeStyles((theme) => ({
     position: 'relative',
   },
   navSearch: {
-    transition: 'all 0.2s ease-in',
+    transition: 'all .2s ease-in',
     width: '0px',
     margin: '0 10px 0 10px',
-    // padding: '0 40px 0 20px',
-    padding: '0 19px 0 19px',
+    padding: '0 32px 0 19px',
     height: '38px',
-    color: '#666',
+    color: theme.title,
     outline: 'none',
     border: 'none',
     borderRadius: '19px',
-    // background: '#eee',
     '&::placeholder': {
       color: theme.flat,
       fontSize: '16px',
@@ -32,7 +29,7 @@ const useclassess = makeStyles((theme) => ({
   },
   isSearch: {
     width: '100px',
-    // background: '#3C8DAD',
+    background: theme.flatBackground,
   },
   searchInfo: {
     position: 'absolute',
@@ -61,6 +58,7 @@ const useclassess = makeStyles((theme) => ({
   },
   searchInfoHeader: {
     display: 'flex',
+    alignItems: 'center',
     lineHeight: '17px',
     textAlign: 'center',
     marginBottom: '10px',
@@ -109,7 +107,6 @@ const useclassess = makeStyles((theme) => ({
 }));
 const NavSearch = () => {
   const [angle, setAngle] = useState(0);
-  // const [searchFoucus, setSearchFocus] = useState(false);
   const classes = useclassess(angle);
   const isFocus = useSelector(state => state.getIn(['header', 'isFocus']));
   const isSearch = useSelector(state => state.getIn(['header', 'isSearch']))
@@ -117,6 +114,8 @@ const NavSearch = () => {
   const isMouseIn = useSelector(state => state.getIn(['header', 'isMouseIn']));
   const currentPage = useSelector(state => state.getIn(['header', 'currentPage']));
   const totalPage = useSelector(state => state.getIn(['header', 'totalPage']));
+  const searchTags = useSelector(state => state.getIn(['home', 'searchTags']));
+  const searchTagsString = useSelector(state => state.getIn(['home', 'searchTagsString']));
   const dispatch = useDispatch();
 
   function inputOnFocus() {
@@ -150,12 +149,24 @@ const NavSearch = () => {
     }
   }
 
+  const handleSearchInputChange = () => (event) => {
+    dispatch(homeActionCreators.storeSearchTagsStringAction(event.target.value))
+  }
+
+  function handleClickSearchTag(tag) {
+    //如果已经选择该类tag则不再添加重复元素进入数组
+    if (searchTags.indexOf(tag) > -1) {
+      return;
+    }
+    dispatch(homeActionCreators.storeSearchTagsStringAction(searchTags.join(' ') + ' ' + tag));
+  }
+
   function showSearchInfo() {
     const tempList = list.toJS();
     if (tempList.length && (isFocus || isMouseIn)) {
       const showList = [];
       for (let i = (currentPage - 1) * 10; i < currentPage * 10; i++) {
-        tempList[i] && showList.push(<NavLink className={classes.searchInfoItem} key={tempList[i]} to={URI.HOME}>{tempList[i]}</NavLink>);
+        tempList[i] && showList.push(<div className={classes.searchInfoItem} key={tempList[i]} onClick={() => {handleClickSearchTag(tempList[i])}}>{tempList[i]}</div>);
       }
       return (
         <div
@@ -170,7 +181,6 @@ const NavSearch = () => {
               onClick={changePage}
             >
               <div className={ classes.spin}><RefreshIcon /></div>
-              {/* <span className={`iconfont ${classes.spin}`}>&#xe851;</span> */}
               <div>换一批</div>
             </div>
           </div>
@@ -187,8 +197,10 @@ const NavSearch = () => {
       <input
         className={`${classes.navSearch} ${isSearch ? classes.isSearch : ''}`}
         placeholder={'搜索'}
-        onBlur={ inputOnBlur }
-        onFocus={ inputOnFocus }
+        onBlur={inputOnBlur}
+        onFocus={inputOnFocus}
+        value={searchTagsString}
+        onChange={handleSearchInputChange()}
       />
       <SearchOutlinedIcon onClick={handleSearch} className={`${classes.searchIcon} ${isSearch ? classes.focus : ''}`}/>
       {showSearchInfo()}

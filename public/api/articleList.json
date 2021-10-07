@@ -8,7 +8,8 @@
 		"diamondNum": 22.2,
 		"auther":"水藝堂主人",
 		"commentsNum":9,
-		"likeNum":18
+		"likeNum":18,
+		"tag": ["教育", "生活"]
 	}, {
 		"id": 2,
 		"title": "手机掉厕所了！！！",
@@ -17,7 +18,8 @@
 		"diamondNum": 0.6,
 		"auther":"一只小思呀",
 		"commentsNum":3,
-		"likeNum":3
+		"likeNum":3,
+		"tag": ["生活"]
 	}, {
 		"id": 3,
 		"title": "OpenGL 基础变化",
@@ -26,7 +28,8 @@
 		"diamondNum": 0.1,
 		"auther":"江海寄余生12138",
 		"commentsNum":0,
-		"likeNum":1
+		"likeNum":1,
+		"tag": ["科技"]
 	}, {
 		"id": 4,
 		"title": "LBPH人脸识别---OpenCV-Python开发指南（42）",
@@ -35,7 +38,8 @@
 		"diamondNum": 0.5,
 		"auther":"极客学编程",
 		"commentsNum":0,
-		"likeNum":2
+		"likeNum":2,
+		"tag": ["科技"]
 	}, {
 		"id": 5,
 		"title": "【20210608】今日十点感悟",
@@ -44,6 +48,7 @@
 		"diamondNum": 3.0,
 		"auther":"邱小美是Kelly",
 		"commentsNum":2,
-		"likeNum":17
+		"likeNum":17,
+		"tag": ["生活"]
 	}]
 }

@@ -12,6 +12,8 @@ export const RECOMMEND_LIST_LOADING_ON = 'home_recommend_list_loading_on';
 export const RECOMMEND_LIST_LOADING_OFF = 'home_recommend_list_loading_off';
 export const RECOMMEND_WRITERS_LIST_LOADING_ON = 'home_recommend_writers_list_loading_on';
 export const RECOMMEND_WRITERS_LIST_LOADING_OFF = 'home_recommend_writers_list_loading_off';
+export const STORE_SEARCH_TAGS = 'home_store_search_tags';
+export const STORE_SEARCH_TAGS_STRING = 'home_store_search_tags_string';
 
 //Async
 export const FETCH_ARTICLE_LIST = 'home_fetch_article_list';

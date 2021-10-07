@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { actionCreators } from '../../store/login';
+import { actionCreators as writingActionCreators} from '../../store/writing';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as URI from '../../uri';
@@ -24,17 +25,14 @@ const useStyles = makeStyles((theme) =>({
     color: theme.primary
   },
   btnFlat: {
-    // transition: 'all 0.2s ease-in',
     height: '38px',
     width: '38px',
     lineHeight: '38px',
     textAlign: 'center',
     border: `1px solid ${theme.primary}`,
     borderRadius: '25px',
-    // padding: '0 20px',
     marginRight: '30px',
     fontSize: '14px',
-    // background: theme.primary,
     color: theme.primary,
     cursor: 'pointer'
   },
@@ -45,7 +43,6 @@ const useStyles = makeStyles((theme) =>({
     textAlign: 'center',
     border: `1px solid ${theme.primary}`,
     borderRadius: '25px',
-    // padding: '0 20px',
     marginRight: '30px',
     fontSize: '14px',
     background: theme.primary,
@@ -65,12 +62,6 @@ const useStyles = makeStyles((theme) =>({
   userRegIcon: {
     color: theme.flat,
   },
-  // publish: {
-  //   transition: 'all 0.2s ease-in',
-  //   height: '38px',
-  //   width: '58px',
-  //   borderRadius: '15px',
-  // },
   loginWrapper: {
     cursor: 'pointer',
     display: 'flex',
@@ -102,6 +93,7 @@ const HeaderAddition = () => {
   }
 
   function handleClickToWriting() {
+    dispatch(writingActionCreators.needUploadAction());
     history.push(URI.WRITING);
   }
 
@@ -113,7 +105,6 @@ const HeaderAddition = () => {
           <div className={classes.loginWrapper} onClick={handleToLogin}><div className={isLoginActive ? classes.textActive : classes.textFlat}>登录</div><LoginOutlinedIcon className={isLoginActive ? classes.logIconActive : classes.logIcon}/></div>}
       </div>
       <div className={`${classes.btnFlat} ${isWritingActive ? classes.btnActive : ''}`} onClick={handleClickToWriting}><span className={`iconfont`}>&#xe6eb;</span></div>
-      {/* <div className={`${classes.btn} ${isWritingActive ? classes.publish : ''}`}>{isWritingActive ? <div onClick={handleClickPublish}>发布</div> : <NavLink className={classes.link} to={URI.WRITING}><span className={`iconfont`}>&#xe6eb;</span></NavLink>}</div> */}
     </div>
   );
 }
